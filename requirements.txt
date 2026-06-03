@@ -13,3 +13,4 @@ groq
 torchvision
 torch
 transformers
+reportlab
