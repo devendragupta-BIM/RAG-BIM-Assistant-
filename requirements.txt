@@ -10,7 +10,5 @@ pypdf
 streamlit
 python-dotenv
 groq
-torchvision
-torch
-transformers
 reportlab
+streamlit-mic-recorder
