@@ -18,6 +18,12 @@ from voice import show_voice, render_voice_input
 from coordinator import show_coordinator
 from issue_tracker import show_issue_tracker
 from cost_intelligence import show_cost_intelligence
+from rfi_intelligence import show_rfi_intelligence
+from submittal_tracker import show_submittal_tracker
+from spec_writer import show_specification_writer
+from meeting_minutes import show_meeting_minutes
+from carbon_estimator import show_carbon_estimator
+from contract_analyzer import show_contract_analyzer
 import tempfile
 import os
 import io
@@ -454,7 +460,13 @@ PAGES = [
     "Voice",
     "Coordination",
     "Issue Tracker",
-    "Cost Intelligence"
+    "Cost Intelligence",
+    "RFI Intelligence",
+    "Submittal Tracker",
+    "Spec Writer",
+    "Meeting Minutes",
+    "Carbon Estimator",
+    "Contract Analyzer"
 ]
 
 PAGE_ICONS = {
@@ -465,12 +477,20 @@ PAGE_ICONS = {
     "Voice":            "🎙️",
     "Coordination":     "🔗",
     "Issue Tracker":    "🐛",
-    "Cost Intelligence":"💰"
+    "Cost Intelligence":"💰",
+    "RFI Intelligence": "📨",
+    "Submittal Tracker":"📦",
+    "Spec Writer":      "📝",
+    "Meeting Minutes":  "🎙️",
+    "Carbon Estimator": "🌿",
+    "Contract Analyzer":"📄"
 }
 
 # Pages that don't need the discipline selector
 NO_DISC_PAGES = ["Coordination", "Issue Tracker", "Cost Intelligence",
-                 "BIM Generator", "Standards Library", "Dashboard", "Voice"]
+                 "BIM Generator", "Standards Library", "Dashboard", "Voice",
+                 "RFI Intelligence", "Submittal Tracker", "Spec Writer",
+                 "Meeting Minutes", "Carbon Estimator", "Contract Analyzer"]
 
 # ── Cached resources ──────────────────────────────────────────────────────────
 
@@ -653,7 +673,7 @@ with st.sidebar:
         <span class='nx-wordmark-nex'>Nex</span>
         <span class='nx-wordmark-bim'>BIM</span>
     </div>
-    <div class='nx-version'>v3.3 &nbsp;·&nbsp; AI Platform for BIM Engineers</div>
+    <div class='nx-version'>v4.0 &nbsp;·&nbsp; AI Platform for BIM Engineers</div>
     """, unsafe_allow_html=True)
 
     # Navigation
@@ -810,6 +830,30 @@ if st.session_state.page == "Cost Intelligence":
     show_cost_intelligence()
     st.stop()
 
+if st.session_state.page == "RFI Intelligence":
+    show_rfi_intelligence()
+    st.stop()
+
+if st.session_state.page == "Submittal Tracker":
+    show_submittal_tracker()
+    st.stop()
+
+if st.session_state.page == "Spec Writer":
+    show_specification_writer()
+    st.stop()
+
+if st.session_state.page == "Meeting Minutes":
+    show_meeting_minutes()
+    st.stop()
+
+if st.session_state.page == "Carbon Estimator":
+    show_carbon_estimator()
+    st.stop()
+
+if st.session_state.page == "Contract Analyzer":
+    show_contract_analyzer()
+    st.stop()
+
 # ── AI Chat page ──────────────────────────────────────────────────────────────
 
 current_vs   = st.session_state.active_vectorstore or base_vectorstore
@@ -918,7 +962,7 @@ if prompt := st.chat_input(
 # Footer
 st.markdown("""
 <div class='nx-footer'>
-    NexBIM v3.3 &nbsp;·&nbsp; Devendra Gupta &nbsp;·&nbsp;
+    NexBIM v4.0 &nbsp;·&nbsp; Devendra Gupta &nbsp;·&nbsp;
     LangChain · ChromaDB · Groq · Streamlit
 </div>
 """, unsafe_allow_html=True)
